@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>함수형-프로그래밍 기초</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name='author' content="최승희">
+<meta name='description' content="함수형-프로그래밍">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!-- 제이쿼리 불러오기 -->
+<script src="/js/common.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=korean" />
+
+<script src="/js//20180318/1.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <h1>Functional Programming in JAVASCRIPT</h1>
+    <h2>함수형-프로그래밍 기초(1)</h2>
+    <h3>20180318 작성자 : csh</h3>
+    <pre><code data-lang="js">
+    /*
+        *함수형 프로그래밍
+        *순수함수. 무상태성(statelessness), 불변성 (immutability)
+        *부수효과 정리 (부수효과가 있어선 안된다)
+            - 전역 범위에서 변수, 속성, 자료구조를 변경
+            - 함수의 원래 인수 값을 변경
+            - 사용자 입력을 처리
+            - 예외를 일으킨 해당 함수가 붙잡지 않고(catch) 그대로 예외(throw)를 던짐
+            - 화면 또는 로그 파일에 출력
+            - HTML 문서, 브라우저 쿠키, DB에 질의
+    */
+
+    var sum = (arr)=>{
+        return arr.reduce((pre,now)=>{
+            return pre+now;
+        },0)
+    }
+
+    var size = (arr)=>{
+        return arr.length;
+    }
+
+    var divide = (number,number2)=>{
+        return number/number2
+    }
+
+    var input = [10,50,90];
+
+    var average = (arr) => {
+        return divide(sum(arr),size(arr))
+    };
+
+    console.log(
+        'aver :: ' + average(input)
+    );
+
+    //콘솔창을 열어 값 확인
+    </code></pre>
+    <div>
+        <span>js 파일의 핵심만 highlight-code에 표현</span>
+        <!-- <ul>
+            
+            <li>데이터를 바꿔도 gulp 재기동 no필요 valu=A</li>
+            
+            <li>데이터를 바꿔도 gulp 재기동 no필요 valu=B</li>
+            
+            <li>데이터를 바꿔도 gulp 재기동 no필요 valu=C</li>
+            
+            <li>데이터를 바꿔도 gulp 재기동 no필요 valu=D</li>
+            
+            <li>데이터를 바꿔도 gulp 재기동 no필요 valu=E</li>
+            
+        </ul> -->
+    </div>
+
+    <div class="flex-test">
+        <div class="flex-left-1">
+            flex-left-1
+        </div>
+        <div class="flex-left-2">
+            flex-left-2
+        </div>
+        <div class="flex-right-1">
+            flex-right-1
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

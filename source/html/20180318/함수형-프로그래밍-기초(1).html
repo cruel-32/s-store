@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>함수형-프로그래밍 기초</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name='author' content="최승희">
+<meta name='description' content="함수형-프로그래밍">
+@@include('header.html')
+<script src="<%=path.js%>/20180318/1.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <h1><%= subject %></h1>
+    <h2>함수형-프로그래밍 기초(1)</h2>
+    <h3>20180318 작성자 : <%= name%></h3>
+    <pre><code data-lang="js">
+    /*
+        *함수형 프로그래밍
+        *순수함수. 무상태성(statelessness), 불변성 (immutability)
+        *부수효과 정리 (부수효과가 있어선 안된다)
+            - 전역 범위에서 변수, 속성, 자료구조를 변경
+            - 함수의 원래 인수 값을 변경
+            - 사용자 입력을 처리
+            - 예외를 일으킨 해당 함수가 붙잡지 않고(catch) 그대로 예외(throw)를 던짐
+            - 화면 또는 로그 파일에 출력
+            - HTML 문서, 브라우저 쿠키, DB에 질의
+    */
+
+    var sum = (arr)=>{
+        return arr.reduce((pre,now)=>{
+            return pre+now;
+        },0)
+    }
+
+    var size = (arr)=>{
+        return arr.length;
+    }
+
+    var divide = (number,number2)=>{
+        return number/number2
+    }
+
+    var input = [10,50,90];
+
+    var average = (arr) => {
+        return divide(sum(arr),size(arr))
+    };
+
+    console.log(
+        'aver :: ' + average(input)
+    );
+
+    //콘솔창을 열어 값 확인
+    </code></pre>
+    <div>
+        <span>js 파일의 핵심만 highlight-code에 표현</span>
+        <!-- <ul>
+            <% eachTest.forEach((name)=>{ %>
+            <li>데이터를 바꿔도 gulp 재기동 no필요 valu=<%= name.value %></li>
+            <% }); %>
+        </ul> -->
+    </div>
+
+    <div class="flex-test">
+        <div class="flex-left-1">
+            flex-left-1
+        </div>
+        <div class="flex-left-2">
+            flex-left-2
+        </div>
+        <div class="flex-right-1">
+            flex-right-1
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+$desktop-l-width: 1920px;
+$desktop-m-width: 1440px;
+$tablet-l-width: 1024px;
+$tablet-s-width: 768px;
+$mob-l-width: 640px;
+$mob-m-width: 425px;
+$mob-s-width: 375px;
+
+// PC large
+@mixin pc_large {
+    @media screen and (min-width: $desktop-l-width + 1) {
+        @content;
+    }
+}
+// PC middle
+@mixin pc_middle {
+    @media screen and (min-width: $desktop-m-width + 1) {
+        @content;
+    }
+}
+
+//tablet 사이즈이상
+@mixin tablet_up {
+    @media screen and (min-width: $tablet-l-width + 1) {
+        @content;
+    }
+}
+
+//tablet 사이즈이하
+@mixin tablet_down {
+    @media screen and (max-width: $tablet-s-width - 1) {
+        @content;
+    }
+}
+
+// 모바일 large 이하
+@mixin mob_large {
+    @media screen and (max-width: $mob-l-width) {
+        @content;
+    }
+}
+
+// 모바일 mid 이하
+@mixin mob_mid {
+    @media screen and (max-width: $mob-m-width) {
+        @content;
+    }
+}
+
+// 모바일 small 이하
+@mixin mob_small {
+    @media screen and (max-width: $mob-s-width) {
+        @content;
+    }
+}

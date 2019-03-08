@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 /*
  * Functional Programming in JavaScript
  * Chapter 01
@@ -6,7 +6,6 @@
  * Author: Luis Atencio
  */
 // -run- with two functions 
-
 //순수함수. 무상태성(statelessness), 불변성 (immutability)
 
 /*
@@ -18,6 +17,11 @@
     - 화면 또는 로그 파일에 출력
     - HTML 문서, 브라우저 쿠키, DB에 질의
 */
-const a = "하이요";
-const b = text => text+' 랍니다.'
+
+var a = "하이요";
+
+var b = function b(text) {
+  return text + ' 랍니다.';
+};
+
 console.log('실행 : ', b(a));

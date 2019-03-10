@@ -55,16 +55,16 @@ const html = ()=> src([`${origin}/**/*.html`, `!${origin}/include/*.html`,`!${or
         }
     }))
     .pipe(template())
-    .pipe(sitemap({
-        'name':`map.html`,
-        'noDir': '상위',
-        'dest':`${prefix}`,
-        'app':`${origin}`,
-        'untitle':'-',
-        'unknown':'cruel32',
-        'noDescription':'설명이 없어요',
-        'division':'html'
-    }))
+    // .pipe(sitemap({
+    //     'name':`map.html`,
+    //     'noDir': '상위',
+    //     'dest':`${prefix}`,
+    //     'app':`${origin}`,
+    //     'untitle':'-',
+    //     'unknown':'cruel32',
+    //     'noDescription':'설명이 없어요',
+    //     'division':'html'
+    // }))
     .pipe(dest(`${project}${prefix}`))
     .pipe(browsersync.stream());
 
@@ -107,7 +107,7 @@ const browserSyncInit = (done)=>{
     browsersync.init({
         server: {
             baseDir: `${project}/`,
-            index: "map.html"
+            index: "html/index.html"
         },
         port: 5000
     },(err,bs)=>{

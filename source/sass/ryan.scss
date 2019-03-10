@@ -1,0 +1,12 @@
+@import './mixin.scss';
+@import './variable.scss';
+
+.RyanChar {
+  text-align: center;
+  #svg_container {
+    margin:0 auto;
+    max-width : 800px;
+    max-height : 700px; 
+    transform : scale(1);
+  }
+}

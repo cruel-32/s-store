@@ -1,0 +1,57 @@
+@import '../mixin.scss';
+@import '../variable.scss';
+
+.container {
+    background-color: $bgColor;
+    position: fixed;
+    z-index:5;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.StoryDialog {
+    position: relative;
+    margin:0 25px;
+    max-width:1000px;
+    box-sizing:border-box;
+    padding:25px;
+    background:#fff;
+    border-radius:30px;
+    border:10px solid #000;
+    .text-bar {
+        font-size:30px;
+        white-space:nowrap;
+    }
+    > button {
+        position:absolute;
+        bottom:10px;
+        right:10px;
+        background:transparent;
+        font-size:50px;
+        border:none;
+        outline:0;
+        cursor:pointer;
+        &.btn_read {
+            > i {
+                color:$ryanColor;
+            }
+        }
+        &.btn_next {
+            > i {
+                color:green;
+            }
+        }
+        &.btn_answer {
+            > i {
+                color:green;
+            }
+        }
+        &.btn_menu {
+            > i {
+                color:black;
+            }
+        }
+    }
+}

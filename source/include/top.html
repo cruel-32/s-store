@@ -1,17 +1,20 @@
+<link rel="stylesheet" type="text/css" href="<%=path.css%>top.css" />
 <div class="top_menu">
     <div class="left_box">
-        <router-link tag="a" to="/">
-        <i class="fas fa-home"></i>
-        </router-link>
-        <router-link tag="a" to="/" class="link-home">
-        <h1 class="title">S-STORE</h1>
-        </router-link>
+        <a href="/">
+            <i class="fas fa-home"></i>
+        </a>
+        <a href="/" class="link-home">
+            <h1 class="title">S-STORE</h1>
+        </a>
     </div>
     <div  class="right_box">
-        <SearchBar />
-        <!-- <template>
-            <button>join</button>
-            <button>login</button>
-        </template> -->
+        <div class="search-bar">
+            <form @submit.prevent="search">
+                <input class="inp-search" type="text"  v-model="keyword" placeholder="검색어를 입력하세요" />
+                <button class="btn-remove" type="button" v-show="keyword" @click="removeKeyword"><i class="far fa-times-circle"></i></button>
+                <button class="btn-search" type="submit" ><i class="fas fa-search"></i></button>
+            </form>
+        </div>
     </div>
 </div>

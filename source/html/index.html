@@ -8,12 +8,17 @@
 <meta name='description' content="s-store publishing file">
 @@include('header.html')
 <!-- <script src="<%=path.js%>/20180318/1.js"></script> -->
+<link rel="stylesheet" type="text/css" href="<%=path.css%>page/index.css" />
 </head>
 <body>
 <div class="wrap">
     @@include('top.html')
-    <div>
-        gulp가 업데이트 되었다.
+    <div class="container">
+        @@include('ryan.html')
+        <div class="StoryDialog">
+            <div class="text-bar">안녕! 반가워! 내가 누군진 알고 있겠지?</div>
+            <button class="btn_read" ><i class="far fa-comment-dots" ></i></button>
+        </div>
     </div>
 </div>
 </body>

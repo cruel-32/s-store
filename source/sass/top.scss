@@ -1,0 +1,66 @@
+@import './mixin.scss';
+@import './variable.scss';
+
+.top_menu {
+  position: relative;
+  z-index:10;
+  background-color:#000;
+  height:34px;
+  padding:6px 10px;
+  box-sizing: border-box;
+  .left_box {
+    float: left;
+    .fa-home {
+      color:#fff;
+      font-size:16px;
+      vertical-align: bottom;
+    }
+    .link-home {
+      text-decoration : none;
+      .title {
+        display:inline-block;
+        font-size:14px;
+        color:#fff;
+      }
+    }
+  }
+  .right_box {
+    float: right;
+  }
+  &:after {
+    content:'';
+    display:block;
+    clear: both;
+  }
+}
+
+.search-bar {
+  position: relative;
+  border-bottom:1px solid #eaeaea;
+  .inp-search {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color:#fff;
+  }
+  .btn-remove {
+    background: transparent;
+    border: 0;
+    color:#fff;
+    cursor:pointer;
+    padding:0;
+    font-size:12px;
+    position: absolute;
+    right:24px;
+    top:2px;
+  }
+  .btn-search {
+    background: transparent;
+    border: 0;
+    color:#fff;
+    cursor:pointer;
+    padding:0;
+    font-size:16px;
+    float:right;
+  }
+}

@@ -2,32 +2,41 @@
 @import '../variable.scss';
 
 .container {
-    background-color: $bgColor;
-    position: fixed;
-    z-index:5;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    &.ryan {
+        background-color: $bgColor;
+        position: fixed;
+        z-index:5;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:url(/images/back.png) center top;
+        background-size:cover;
+    }
 }
 
 .StoryDialog {
-    position: relative;
-    margin:0 25px;
-    max-width:1000px;
+    position: fixed;
+    bottom:0;
+    left:50%;
+    transform:translate(-50%,-100%);
+    width:80%;
+    max-width:800px;
     box-sizing:border-box;
-    padding:25px;
+    padding:25px 100px 25px 25px;
     background:#fff;
     border-radius:30px;
     border:10px solid #000;
+    z-index:7;
     .text-bar {
-        font-size:30px;
-        white-space:nowrap;
+        font-size:1.6rem;
+        line-height:1.2;
     }
     > button {
         position:absolute;
-        bottom:10px;
+        top:50%;
         right:10px;
+        transform:translate(0, -50%);
         background:transparent;
         font-size:50px;
         border:none;
@@ -52,6 +61,42 @@
             > i {
                 color:black;
             }
+        }
+    }
+}
+
+.menu_icons_wrap {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:7;
+    .btn-default {
+        position:fixed;
+        background:transparent;
+        z-index:7;
+        cursor:pointer;
+        top:50%;
+        left:50%;
+        i {
+            font-size:10rem;
+        }
+        &.btn-profile {
+            transform:translate(-190%, -200%);
+            color:#76a3f8;
+        }
+        &.btn-source {
+            transform:translate(150%, -200%);
+            color:#91d18c;
+        }
+        &.btn-code {
+            transform:translate(-260%, 30%);
+            color:#ba9527;
+        }
+        &.btn-github {
+            transform:translate(125%, 35%);
+            color:#ec3f3f;
         }
     }
 }

@@ -67,35 +67,39 @@
 
 .menu_icons_wrap {
     position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    max-width:700px;
+    width:80%;
+    height:50%;
     z-index:7;
     .btn-default {
-        position:fixed;
+        position: absolute;;
         background:transparent;
         z-index:7;
         cursor:pointer;
-        top:50%;
-        left:50%;
         i {
             font-size:10rem;
         }
         &.btn-profile {
-            transform:translate(-190%, -200%);
+            left:0;
+            top:0;
             color:#76a3f8;
         }
         &.btn-source {
-            transform:translate(150%, -200%);
+            right:0;
+            top:0;
             color:#91d18c;
         }
         &.btn-code {
-            transform:translate(-260%, 30%);
+            left:0;
+            bottom:0;
             color:#ba9527;
         }
         &.btn-github {
-            transform:translate(125%, 35%);
+            right:0;
+            bottom:0;
             color:#ec3f3f;
         }
     }

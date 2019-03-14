@@ -9,4 +9,9 @@
   max-width : 800px;
   max-height : 700px;
   transform : translate(-50%, -50%) scale(1);
+  #face {
+    transform-origin : 50% 50% 0; //x, y, z 축
+    transform: rotate3d(1,1,1,0rad); //x, y, z의 가중치와 각도
+    transition:all 0.3s ease;
+  }
 }

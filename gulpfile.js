@@ -115,7 +115,7 @@ const browserSyncInit = (done)=>{
             baseDir: `${project}/`,
             index: "html/index.html"
         },
-        port: 5000
+        port: 9000
     },(err,bs)=>{
         console.log('err : ', err);
         console.log('server : ', bs.options.get('server'));
@@ -132,5 +132,4 @@ const watcher = () => {
     watch([`${origin}/images/**/*.{gif,jpeg,jpg,png,svg}`], images).on('change', browsersync.reload);
 }
 
-exports.default = series(clean, parallel(html, css, js, images));
-exports.serve = series(clean, parallel(html, css, js, images), parallel(browserSyncInit, watcher) );
+exports.default = series(clean, parallel(html, css, js, images), parallel(browserSyncInit, watcher) );

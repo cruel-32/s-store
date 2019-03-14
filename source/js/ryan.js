@@ -25,7 +25,7 @@ const RyanMouseAction = {
         });
         that.$menuIconsWrap.addEventListener('mousemove',(e)=>{
             const {x,y} = e;
-            const {left,top,width,height} = that.boundingClientRect;
+            const {left,top,width,height} = that.headRect;
             const {mw, mh} = this.menuSize;
             const _x = x-(that.$container.offsetWidth - that.$menuIconsWrap.offsetWidth)/2;
             const _y = y-(that.$container.offsetHeight - that.$menuIconsWrap.offsetHeight)/2;
@@ -52,10 +52,10 @@ const RyanMouseAction = {
         });
     },
     getAllObjectRect(){
-        this.boundingClientRect = this.getObjectRect(this.$head);
-        console.log('this.boundingClientRect.width : ', this.boundingClientRect.width);
+        this.headRect = this.getObjectRect(this.$head);
+        console.log('this.boundingClientRect.width : ', this.headRect.width);
         console.log('this.$face.style["transform-origin"] : ', this.$face.style["transform-origin"]);
-        this.$face.style["transform-origin"] = `50% 50% ${-this.boundingClientRect.width/2}px`;
+        this.$face.style["transform-origin"] = `50% 50% ${-this.headRect.width/2}px`;
     },
     getObjectRect(obj){
         return obj.getBoundingClientRect();

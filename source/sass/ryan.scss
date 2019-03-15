@@ -13,39 +13,10 @@
     transform-origin : 50% 50% 0; //x, y, z 축
     transform: rotate3d(1,1,1,0rad); //x, y, z의 가중치와 각도
     transition:all 0.2s ease;
-    &.yes {
-      animation: yes 0.5s 3 alternate;
-    }
-    &.no {
-      animation: no 0.5s 3 alternate;
-    }
   }
   #ears {
     transform-origin : 50% 50% 0; //x, y, z 축
     transform: rotate3d(1,1,1,0rad); //x, y, z의 가중치와 각도
     transition:all 0.2s ease;
-  }
-}
-
-@keyframes yes {
-  from {
-    transform: rotate3d(1,0,0,0.05rad);
-  }
-  50% {
-    transform: rotate3d(1,0,0,-0.05rad);
-  }
-  to {
-    transform: rotate3d(1,0,0,0.05rad);
-  }
-}
-@keyframes no {
-  from {
-    transform: rotate3d(0,1,0,0.05rad);
-  }
-  50% {
-    transform: rotate3d(0,1,0,-0.05rad);
-  }
-  to {
-    transform: rotate3d(0,1,0,0.05rad);
   }
 }

@@ -43,8 +43,8 @@ const RyanMouseAction = {
 
         });
         that.$menuIconsWrap.addEventListener('mouseout',(e)=>{
-            that.$face.style.transform = 'rotate3d(1, 0, 0, 0deg)';
-            that.$ears.style.transform = 'rotate3d(1, 0, 0, 0deg)';
+            that.$face.style.transform = 'rotate3d(1, 0, 0, 0)';
+            that.$ears.style.transform = 'rotate3d(1, 0, 0, 0)';
         });
 
         $('.mode_change').on('click', ()=>{
@@ -52,40 +52,19 @@ const RyanMouseAction = {
             this.storyMode = !this.storyMode;
         });
 
-        $('.btn_yes').on('click',()=>{
-            if(that.$face.classList.contains('yes')){
-                that.$face.style.transform = '';
-                setTimeout(()=>{
-                    that.$face.classList = '';
-                },200)
-            } else {
-                that.$face.style.transform = 'rotate3d(1,0,0,0.05rad)';
-                setTimeout(()=>{
-                    that.$face.classList = '';
-                    that.$face.classList.add('yes');
-                    setTimeout(()=>{
-                        that.$face.classList = '';
-                    },1500)
-                },200)
-            }
+        $('.btn_yes').on('click', async ()=>{
+            await that.doAnimation(that.$face, 'rotate3d(1, 0, 0, 0.05rad)')
+            await that.doAnimation(that.$face, 'rotate3d(1, 0, 0, -0.05rad)')
+            await that.doAnimation(that.$face, 'rotate3d(1, 0, 0, 0.05rad)')
+            await that.doAnimation(that.$face, 'rotate3d(1, 0, 0, -0.05rad)')
+            await that.doAnimation(that.$face, 'rotate3d(1, 1, 1, 0)')
         });
-        $('.btn_no').on('click',()=>{
-            console.dir(that.$face);
-            if(that.$face.classList.contains('no')){
-                that.$face.style.transform = '';
-                setTimeout(()=>{
-                    that.$face.classList = '';
-                },200)
-            } else {
-                that.$face.style.transform = 'rotate3d(0,1,0,0.05rad)';
-                setTimeout(()=>{
-                    that.$face.classList = '';
-                    that.$face.classList.add('no');
-                    setTimeout(()=>{
-                        that.$face.classList = '';
-                    },1500)
-                },200)
-            }
+        $('.btn_no').on('click', async ()=>{
+            await that.doAnimation(that.$face, 'rotate3d(0, 1, 0, 0.05rad)')
+            await that.doAnimation(that.$face, 'rotate3d(0, 1, 0, -0.05rad)')
+            await that.doAnimation(that.$face, 'rotate3d(0, 1, 0, 0.05rad)')
+            await that.doAnimation(that.$face, 'rotate3d(0, 1, 0, -0.05rad)')
+            await that.doAnimation(that.$face, 'rotate3d(1, 1, 1, 0)')
         });
     },
     removeClass(obj){
@@ -97,6 +76,14 @@ const RyanMouseAction = {
     setOriginZ(obj, value){
         obj.style["transform-origin"] = `50% 50% ${value}px`;
     },
+    doAnimation(obj, value){
+        return new Promise((res,rej)=>{
+            obj.style.transform = value;
+            setTimeout(()=>{
+                res();
+            },200)
+        })
+    }
 }
 
 $(function(){

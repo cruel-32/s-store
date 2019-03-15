@@ -74,7 +74,10 @@ const js = ()=> src(`./${origin}/js/**/*.js`)
     .pipe(plumber({errorHandler : gutil.log}))
     .pipe(jshint())
     .pipe(babel({
-        presets: ['@babel/env']
+        "presets": [
+            '@babel/env'
+        ],
+        "plugins": ["@babel/plugin-transform-async-to-generator"]
     }))
     // .pipe(minify({
     //     ext: {

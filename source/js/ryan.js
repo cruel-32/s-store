@@ -8,64 +8,94 @@ const RyanMouseAction = {
     define(){
         this.$container = document.querySelector('.container');
         this.$face = document.querySelector('#face');
+        this.$ears = document.querySelector('#ears');
         this.$head = document.querySelector('#head');
         this.$menuIconsWrap = document.querySelector('.menu_icons_wrap');
-
-        this.menuSize = {
-            mw : this.$menuIconsWrap.offsetWidth,
-            mh : this.$menuIconsWrap.offsetHeight,
-        };
-
-        this.getAllObjectRect();
+        this.storyMode = false;
+        this.headRect = this.getObjectRect(this.$head)
+        this.setOriginZ(this.$face, -this.headRect.width/2)
+        this.setOriginZ(this.$ears, this.headRect.width/2)
     },
     addEvent(){
         var that = this;
         $(window).on('resize', ()=>{
-            that.getAllObjectRect();
+            that.headRect = that.getObjectRect(that.$head);
+            that.setOriginZ(that.$face, -that.headRect.width/2)
+            that.setOriginZ(that.$ears, that.headRect.width/2)
         });
         that.$menuIconsWrap.addEventListener('mousemove',(e)=>{
+            if(that.storyMode){
+                return
+            }
             const {x,y} = e;
             const {left,top,width,height} = that.headRect;
-            const {mw, mh} = this.menuSize;
-            const _x = x-(that.$container.offsetWidth - that.$menuIconsWrap.offsetWidth)/2;
-            const _y = y-(that.$container.offsetHeight - that.$menuIconsWrap.offsetHeight)/2;
 
-            // const ryanRect = ryan.getBoundingClientRect();
-            // const inputRect = el.getBoundingClientRect();
-            // const caretRect = span.getBoundingClientRect();
-            // const caretPos = caretRect.left + Math.min(caretRect.width, inputRect.width) * !!text;
-            // const distCaret = ryanRect.left + ryanRect.width/2 - inputRect.left - caretPos;
-            // const distInput = ryanRect.top + ryanRect.height/2 - inputRect.top;
-            // const y = Math.atan2(-distCaret, Math.abs(distInput)*3);
-            // const x =  Math.atan2(distInput, Math.abs(distInput)*3 / Math.cos(y));
-            // const angle = Math.max(Math.abs(x), Math.abs(y));
-            // rotate3d(x/angle, y/angle, y/angle/2, angle);
-            
-            const ry = Math.atan2(-_x, Math.abs(_y)*3);
-            const rx =  Math.atan2(_y, Math.abs(_y)*3 / Math.cos(ry));
+            const tx = left + width/2 - x;
+            const yx = top + height/2 - y;
+
+            const ry = Math.atan2(-tx , Math.abs(yx));
+            const rx =  Math.atan2(yx, Math.abs(yx) / Math.cos(ry));
+
             const angle = Math.max(Math.abs(rx), Math.abs(ry));
-            that.$face.style.transform = `rotate3d(${rx/angle}, ${ry/angle}, ${ry/angle/2}, ${angle}rad)`;
+
+            that.$face.style.transform = `rotate3d(${rx/angle}, ${ry/angle}, ${ry/angle}, ${angle/8}rad)`;
+            that.$ears.style.transform = `rotate3d(${rx/angle}, ${ry/angle}, ${ry/angle}, ${angle/20}rad)`;
+
         });
         that.$menuIconsWrap.addEventListener('mouseout',(e)=>{
-            console.log('아웃 : ', this.$face.style);
             that.$face.style.transform = 'rotate3d(1, 0, 0, 0deg)';
+            that.$ears.style.transform = 'rotate3d(1, 0, 0, 0deg)';
+        });
+
+        $('.mode_change').on('click', ()=>{
+            console.log('change');
+            this.storyMode = !this.storyMode;
+        });
+
+        $('.btn_yes').on('click',()=>{
+            if(that.$face.classList.contains('yes')){
+                that.$face.style.transform = '';
+                setTimeout(()=>{
+                    that.$face.classList = '';
+                },200)
+            } else {
+                that.$face.style.transform = 'rotate3d(1,0,0,0.05rad)';
+                setTimeout(()=>{
+                    that.$face.classList = '';
+                    that.$face.classList.add('yes');
+                    setTimeout(()=>{
+                        that.$face.classList = '';
+                    },1500)
+                },200)
+            }
+        });
+        $('.btn_no').on('click',()=>{
+            console.dir(that.$face);
+            if(that.$face.classList.contains('no')){
+                that.$face.style.transform = '';
+                setTimeout(()=>{
+                    that.$face.classList = '';
+                },200)
+            } else {
+                that.$face.style.transform = 'rotate3d(0,1,0,0.05rad)';
+                setTimeout(()=>{
+                    that.$face.classList = '';
+                    that.$face.classList.add('no');
+                    setTimeout(()=>{
+                        that.$face.classList = '';
+                    },1500)
+                },200)
+            }
         });
     },
-    getAllObjectRect(){
-        this.headRect = this.getObjectRect(this.$head);
-        console.log('this.boundingClientRect.width : ', this.headRect.width);
-        console.log('this.$face.style["transform-origin"] : ', this.$face.style["transform-origin"]);
-        this.$face.style["transform-origin"] = `50% 50% ${-this.headRect.width/2}px`;
+    removeClass(obj){
+        obj.classList = '';
     },
     getObjectRect(obj){
         return obj.getBoundingClientRect();
     },
-    animate(){
-        
-
-
-
-
+    setOriginZ(obj, value){
+        obj.style["transform-origin"] = `50% 50% ${value}px`;
     },
 }
 

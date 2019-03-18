@@ -15,21 +15,44 @@
     }
 }
 
+#story_container {
+    position: fixed;
+    top:0;
+    left:50%;
+    transform:translate(-50%,30%);
+    width:615px;
+    height:218px;
+    z-index:7;
+}
+
 .StoryDialog {
     position: fixed;
-    bottom:0;
+    top:50%;
     left:50%;
-    transform:translate(-50%,-100%);
-    width:80%;
-    max-width:800px;
+    transform:translate(-50%,-360px);
+    width:615px;
     box-sizing:border-box;
     padding:25px 100px 25px 25px;
-    background:#fff;
-    border-radius:30px;
-    border:10px solid #000;
+    background:#fff2dc;
+    border-radius: 30px;
+    border:5px solid #000;
     z-index:7;
+    &:before {
+        content:'';
+        position:fixed;
+        bottom: -31px;
+        left: 130px;
+        width:50px;
+        height:50px;
+        transform:rotate(45deg);
+        background:#fff2dc;
+        border-right:5px solid #000;
+        border-bottom:5px solid #000;
+    }
     .text-bar {
-        font-size:1.6rem;
+        position: relative;
+        z-index: inherit;
+        font-size:40px;
         line-height:1.2;
     }
     > button {
@@ -46,6 +69,16 @@
             > i {
                 color:$ryanColor;
             }
+            &:after {
+                content: 'click!';
+                color:$ryanColor;
+                position: absolute;
+                right: 12px;
+                top: -15px;
+                font-size: 20px;
+                transform:rotate(-8deg);
+                animation:light 0.5s infinite alternate;
+            }
         }
         &.btn_next {
             > i {
@@ -60,6 +93,46 @@
         &.btn_menu {
             > i {
                 color:black;
+            }
+        }
+    }
+}
+
+@keyframes light {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.AnswerDialog {
+    position:fixed;
+    top:50%;
+    left:0;
+    right:0;
+    transform:translate(0, -50%);
+    z-index:8;
+    background:rgba(0,0,0,0.8);
+
+    .back {
+        width:800px;
+        margin:50px auto;
+        text-align: center;
+        .btns {
+            width:350px;
+            margin:10px;
+            color: #fff;
+            box-sizing: border-box;
+            // background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#aaa), 0.5);
+            background: transparent;
+            border-radius: 20px;
+            font-size:30px;
+            padding:25px;
+            cursor:pointer;
+            &:hover {
+                background: $ryanColor;
             }
         }
     }
@@ -104,3 +177,116 @@
         }
     }
 }
+
+.cloud1 {
+    position: fixed;
+    left: 0px;
+    top:-160px;
+    z-index:5;
+    width: 583px;
+    height:302px;
+    background: url(/images/cloud1.png) no-repeat;
+    animation:move1 90s infinite alternate;
+}
+
+.cloud2 {
+    position: fixed;
+    left: 0px;
+    top:-30px;
+    z-index:5;
+    width: 291px;
+    height:174px;
+    background: url(/images/cloud2.png) no-repeat;
+    animation:move2 80s infinite alternate;
+}
+
+.cloud3 {
+    position: fixed;
+    left: 0px;
+    top:90px;
+    z-index:5;
+    width: 118px;
+    height:64px;
+    background: url(/images/cloud3.png) no-repeat;
+    animation:move3 100s infinite alternate;
+}
+
+.cloud4 {
+    position: fixed;
+    left: 0px;
+    top:-220px;
+    z-index:5;
+    width: 583px;
+    height:302px;
+    background: url(/images/cloud1.png) no-repeat;
+    animation:move4 180s infinite alternate;
+}
+
+.cloud5 {
+    position: fixed;
+    left: 0px;
+    top:-90px;
+    z-index:5;
+    width: 291px;
+    height:174px;
+    background: url(/images/cloud2.png) no-repeat;
+    animation:move5 160s infinite alternate;
+}
+
+@keyframes move1 {
+    from {
+        left:150%
+    }
+    to {
+        left:-30%;
+    }
+}
+
+@keyframes move2 {
+    from {
+        left:50%;
+    }
+    50% {
+        left:150%;
+    }
+    to {
+        left:-60%;
+    }
+}
+
+@keyframes move3 {
+    from {
+        left:-10%;
+    }
+    50% {
+        left:100%;
+    }
+    to {
+        left:-30%;
+    }
+}
+
+@keyframes move4 {
+    from {
+        left:150%
+    }
+    50% {
+        left:-50%;
+    }
+    to {
+        left:150%;
+    }
+}
+
+@keyframes move5 {
+    from {
+        left:-10%;
+    }
+    50% {
+        left:100%;
+    }
+    to {
+        left:-30%;
+    }
+}
+

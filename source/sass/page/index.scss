@@ -1,5 +1,5 @@
-@import '../mixin.scss';
-@import '../variable.scss';
+@import '../import/mixin.scss';
+@import '../import/variable.scss';
 
 .container {
     &.ryan {
@@ -108,6 +108,7 @@
 }
 
 .AnswerDialog {
+    display:none;
     position:fixed;
     top:50%;
     left:0;

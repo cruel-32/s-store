@@ -91,7 +91,7 @@ const js = ()=> src(`./${origin}/js/**/*.js`)
     .pipe(browsersync.stream());
 
 
-const css = () => src([`${origin}/sass/**/*.{scss,sass,css}`,`!${origin}/sass/mixin/*.{scss,sass}`])
+const css = () => src([`${origin}/sass/**/*.{scss,sass,css}`,`!${origin}/sass/import/*.{scss,sass}`])
     .pipe(newer(`${origin}/sass/**/*.{scss,sass,css}`))
     // .pipe(sourcemaps.init())
     .pipe(sass.sync().on('error', sass.logError))

@@ -29,7 +29,6 @@
     "gulp-newer": "^1.3.0",
     "gulp-plumber": "^1.2.0",
     "gulp-sass": "^4.0.2",
-    "gulp-sitemap-generator": "*",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-stats": "0.0.4",
     "gulp-template": "^5.0.0",
@@ -45,6 +44,7 @@
     "@babel/preset-env": "^7.4.1",
     "browser-sync": "^2.26.3",
     "del": "^4.0.0",
+    "gulp-filemap-generator": "^0.0.1",
     "node-sass": "^4.11.0"
   }
 }

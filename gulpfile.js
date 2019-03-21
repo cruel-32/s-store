@@ -18,7 +18,7 @@ const gutil = require('gulp-util'),
     inlineCss = require('gulp-inline-css'),
     data = require('gulp-data'),
     template = require('gulp-template'),
-    sitemap = require('gulp-sitemap-generator'),
+    filemap = require('gulp-filemap-generator'),
     fs = require('fs'),
     path = require('path'),
     del = require('del'),
@@ -55,7 +55,7 @@ const html = ()=> src([`${origin}/**/*.html`, `!${origin}/include/*.html`,`!${or
         }
     }))
     .pipe(template())
-    // .pipe(sitemap({
+    // .pipe(filemap({
     //     'name':`map.html`,
     //     'noDir': '상위',
     //     'dest':`${prefix}`,

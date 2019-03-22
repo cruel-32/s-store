@@ -56,14 +56,16 @@ const html = ()=> src([`${origin}/**/*.html`, `!${origin}/include/*.html`,`!${or
     }))
     .pipe(template())
     // .pipe(filemap({
-    //     'name':`map.html`,
-    //     'noDir': '상위',
-    //     'dest':`${prefix}`,
-    //     'app':`${origin}`,
-    //     'untitle':'-',
-    //     'unknown':'cruel32',
-    //     'noDescription':'설명이 없어요',
-    //     'division':'html'
+    //      'template':`map.html`,
+    //      'templatePath':`${origin}`,
+    //      'root': '/root/',
+    //      'title':'-',
+    //      'author':'cruel32',
+    //      'description':'설명이 없어요',
+    //      'stream' : false,
+    //      'baseDir' : `${project}`,
+    //      'listName' : 'maps',
+    //      'hrefBaseDir' : ``
     // }))
     .pipe(dest(`${project}${prefix}`))
     .pipe(browsersync.stream());
